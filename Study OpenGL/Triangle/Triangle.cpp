@@ -14,8 +14,8 @@ float vertices[] = { // 정점데이터 (좌표 -1~1)
 };
 
 unsigned int indices[] = { // 도형데이터 (정점 번호들로 구성)
-	0, 1, 2,
-	3, 4, 5
+	0, 1, 2, // 0번도형
+	3, 4, 5  // 1번도형
 };
 
 const char* VertexShaderSource = // 정점쉐이더 코드 (GLSL) .vs
@@ -126,15 +126,3 @@ int main() {
 	glfwTerminate(); 
 	return 0;
 }
-
-/* Graphics Pipeline (3D Data -> 2D Pixel)
-
-0. Get Vertex Data (Buffer)
-1. Vertex Shader
-2. Shape Assembly
-3. Geometry Shader
-4. Rasterization
-5. Fragment Shader
-6. Tests and Blending
-
-*/
