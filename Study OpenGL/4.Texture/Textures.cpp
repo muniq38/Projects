@@ -66,14 +66,33 @@ int main() {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); // 축소할때 NEAREST(픽셀)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // 확대할때 LINEAR(보간)
 	int width, height, RGB;
+	stbi_set_flip_vertically_on_load(true);
 	unsigned char *data = stbi_load("Tex/container.JPG", &width, &height, &RGB, 0); // 텍스쳐 이미지+정보 불러오기 
 	if (data) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		// data => 2D 텍스쳐 / 텍스쳐는 RGB형으로 / width x height / 원본이미지는 RGB형 / 원본이미지 자료형 ubyte
 		glGenerateMipmap(GL_TEXTURE_2D); // 만든 텍스쳐의 Mimmap 만들기
 	}else cout << "Failed to load texture" << endl; 
-	
-	// data => 2D 텍스쳐 / 텍스쳐는 RGB형으로 / width x height / 원본이미지는 RGB형 / 원본이미지 자료형 ubyte
 	stbi_image_free(data); // 텍스쳐 객체 만들고 남은 이미지 데이터는 폐기
+
+	unsigned int texture2; // 2번째 텍스쳐 객체 만들기 - 방법은 전과 동일함
+	glGenTextures(1, &texture2);
+	glBindTexture(GL_TEXTURE_2D, texture2);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); 
+	unsigned char *data2 = stbi_load("Tex/New.JPG", &width, &height, &RGB, 0); 
+	if (data2) {
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data2);
+		glGenerateMipmap(GL_TEXTURE_2D); 
+	}else cout << "Failed to load texture2" << endl;
+	stbi_image_free(data2); 
+
+	ourShader.use(); // Uniform 설정 - 프로그램 실행 먼저
+	ourShader.setInt("Tex1", 0);
+	ourShader.setInt("Tex2", 1); 
+	// Tex1에는 0번, Tex2에는 1번 텍스쳐 유닛의 정보를 전달하도록 설정
 
 	unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
@@ -95,20 +114,25 @@ int main() {
 	while (!glfwWindowShouldClose(window)) {
 		processEsc(window);
 		processFillorNot(window);
-		//--------
+		//----------
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		//--------
+		//----------
+		glActiveTexture(GL_TEXTURE0); // 텍스쳐 유닛 0번 활성화
+		glBindTexture(GL_TEXTURE_2D, texture); // texture를 유닛에 바인딩(0)
+		glActiveTexture(GL_TEXTURE1); // 텍스쳐 유닛 1번 활성화
+		glBindTexture(GL_TEXTURE_2D, texture2); // texture2를 유닛에 바인딩(1)
+		//----------
 		ourShader.use();
-		glBindTexture(GL_TEXTURE_2D, texture); // 쉐이더의 sampler로 texture 자동으로 할당
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		//--------
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-	glDeleteVertexArrays(1, &VAO);
+	glDeleteVertexArrays(1, &VAO); 
 	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
 	glfwTerminate();
 	return 0;
 }
