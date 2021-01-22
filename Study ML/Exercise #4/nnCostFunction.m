@@ -81,11 +81,11 @@ Delta2 = zeros(size(Theta2));
 Delta1 = zeros(size(Theta1));
 
 for i=1:m
-  delta2 = H2(i,:)-y(i,:);
-  delta1 = (delta2*Theta2);  % deltas = unitÀÇ error°è»ê
+  delta2 = H2(i,:)-Y(i,:);
+  delta1 = (delta2*Theta2);  % deltas = unitÃ€Ã‡ errorÂ°Ã¨Â»Ãª
   delta1 = delta1(2:end).*sigmoidGradient(Z1(i,:));
   Delta2 += (delta2')*[H1(i,:) 1];
-  Delta1 += (delta1')*[X(i,:) 1]; % Deltas = ThetaÀÇ gradient°è»ê
+  Delta1 += (delta1')*[X(i,:) 1]; % Deltas = ThetaÃ€Ã‡ gradientÂ°Ã¨Â»Ãª
 endfor
 
 Theta1_grad = Delta1 + lambda*[zeros(size(Theta1,1),1) Theta1(:,2:end)];
