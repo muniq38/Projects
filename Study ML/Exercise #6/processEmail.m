@@ -97,14 +97,9 @@ while ~isempty(email_contents)
     %       str2). It will return 1 only if the two strings are equivalent.
     %
 
-
-
-
-
-
-
-
-
+    idx = 1;
+    while ~((idx>=1900) || strcmp(str,vocabList(idx)))  idx++;   
+    word_indices = [word_indices; idx];
 
     % =============================================================
 

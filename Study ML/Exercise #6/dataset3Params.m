@@ -23,11 +23,25 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+values = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30];
+minErr = inf;
 
-
-
-
-
+for i=1:size(values,2)
+  for j=1:size(values,2)
+    Ctemp = values(i); 
+    sigtemp = values(j);
+    % Caculating Values
+    model= svmTrain(X, y, C, @(x1,x2) gaussianKernel(x1,x2,sigtemp)); 
+    pred = svmPredict(model, Xval); % Check cross validation datasets (Xval)
+    Err = mean(double(pred ~= yval));
+    % Checking Minimum
+    if(minErr > Err)
+      C = Ctemp
+      sigma = sigtemp
+      minErr = Err
+    endif 
+  endfor
+endfor
 
 % =========================================================================
 
