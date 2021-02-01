@@ -98,8 +98,12 @@ while ~isempty(email_contents)
     %
 
     idx = 1;
-    while ~((idx>=1900) || strcmp(str,vocabList(idx)))  idx++;   
-    word_indices = [word_indices; idx];
+    while ~((idx>=1900) || strcmp(str,vocabList{idx}))  
+      idx++;  
+    endwhile
+    if (idx<1900)
+      word_indices = [word_indices; idx];
+    endif
 
     % =============================================================
 

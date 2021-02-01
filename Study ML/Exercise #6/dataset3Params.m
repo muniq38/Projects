@@ -31,14 +31,14 @@ for i=1:size(values,2)
     Ctemp = values(i); 
     sigtemp = values(j);
     % Caculating Values
-    model= svmTrain(X, y, C, @(x1,x2) gaussianKernel(x1,x2,sigtemp)); 
+    model= svmTrain(X, y, Ctemp, @(x1,x2) gaussianKernel(x1,x2,sigtemp)); 
     pred = svmPredict(model, Xval); % Check cross validation datasets (Xval)
     Err = mean(double(pred ~= yval));
     % Checking Minimum
     if(minErr > Err)
-      C = Ctemp
-      sigma = sigtemp
-      minErr = Err
+      C = Ctemp;
+      sigma = sigtemp;
+      minErr = Err;
     endif 
   endfor
 endfor
