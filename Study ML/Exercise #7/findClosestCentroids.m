@@ -21,11 +21,14 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+idx = ones(size(X,1),1);
+for i=1:size(X,1)
+  for j=1:K
+    if norm(centroids(j,:)-X(i,:))^2 < norm(centroids(idx(i),:)-X(i,:))^2
+      idx(i)=j;
+    endif
+  endfor
+endfor
 
 % =============================================================
 

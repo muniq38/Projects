@@ -18,8 +18,11 @@ Z = zeros(size(X, 1), K);
 %                    projection_k = x' * U(:, k);
 %
 
-
-
+for i=1:size(X,1)
+  for k=1:K
+    Z(i,k) = X(i,:) * U(:,k); % U(:,k)ดย nx1 Reduction Vector, use X(mxn) and each entry of Z
+  endfor
+endfor
 
 % =============================================================
 

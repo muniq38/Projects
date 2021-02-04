@@ -21,7 +21,15 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 %               Notice that U(j, 1:K) is a row vector.
 %               
 
+m = size(Z,1);
+n = size(U,1);
 
+for i=1:m
+  for j=1:n
+    X_rec(i,j) = Z(i,:) * U(j,1:K)'; % U(j,1:K)'ดย Kx1 Recovery Vector
+    % use Z(mxk) and return each entry of X
+  endfor
+endfor
 
 % =============================================================
 
