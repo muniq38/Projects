@@ -11,14 +11,6 @@ def sigmoid(z):
 
 
 ```python
-print ("sigmoid([0, 2]) = " + str(sigmoid(np.array([0,2]))))
-```
-
-    sigmoid([0, 2]) = [0.5        0.88079708]
-    
-
-
-```python
 def initialize_with_zeros(dim):
     w = np.zeros((dim,1))
     b = 0
@@ -26,19 +18,6 @@ def initialize_with_zeros(dim):
     assert(isinstance(b, float) or isinstance(b, int))
     return w, b
 ```
-
-
-```python
-dim = 2
-w, b = initialize_with_zeros(dim)
-print ("w = " + str(w))
-print ("b = " + str(b))
-```
-
-    w = [[0.]
-     [0.]]
-    b = 0
-    
 
 
 ```python
@@ -61,21 +40,6 @@ def propagate(w, b, X, Y):
     grads = {"dw": dw,"db": db}
     return grads, cost
 ```
-
-
-```python
-w, b, X, Y = np.array([[1.],[2.]]), 2., np.array([[1.,2.,-1.],[3.,4.,-3.2]]), np.array([[1,0,1]])
-grads, cost = propagate(w, b, X, Y)
-print ("dw = " + str(grads["dw"]))
-print ("db = " + str(grads["db"]))
-print ("cost = " + str(cost))
-```
-
-    dw = [[0.99845601]
-     [2.39507239]]
-    db = 0.001455578136784208
-    cost = 5.801545319394553
-    
 
 
 ```python
@@ -103,24 +67,6 @@ def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost = False):
 
 
 ```python
-params, grads, costs = optimize(w, b, X, Y, num_iterations= 100, learning_rate = 0.009, print_cost = False)
-
-print ("w = " + str(params["w"]))
-print ("b = " + str(params["b"]))
-print ("dw = " + str(grads["dw"]))
-print ("db = " + str(grads["db"]))
-```
-
-    w = [[0.19033591]
-     [0.12259159]]
-    b = 1.9253598300845747
-    dw = [[0.67752042]
-     [1.41625495]]
-    db = 0.21919450454067654
-    
-
-
-```python
 def predict(w, b, X):
     m = X.shape[1]
     Y_prediction = np.zeros((1,m))
@@ -133,17 +79,6 @@ def predict(w, b, X):
     assert(Y_prediction.shape == (1, m))
     return Y_prediction
 ```
-
-
-```python
-w = np.array([[0.1124579],[0.23106775]])
-b = -0.3
-X = np.array([[1.,-1.1,-3.2],[1.2,2.,0.1]])
-print ("predictions = " + str(predict(w, b, X)))
-```
-
-    predictions = [[1. 1. 0.]]
-    
 
 
 ```python
