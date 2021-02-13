@@ -21,10 +21,10 @@ def relu(Z):
 
 
 ```python
-def initialize_parameters_deep(layer_dims):
+def initialize_parameters_deep(layer_dims): # initialize parameters
     np.random.seed(3)
     parameters = {}
-    L = len(layer_dims)     # number of layers in the network
+    L = len(layer_dims)    
 
     for l in range(1, L):
         parameters['W' + str(l)] = np.random.randn(layer_dims[l],layer_dims[l-1])*0.01
@@ -37,7 +37,7 @@ def initialize_parameters_deep(layer_dims):
 
 
 ```python
-def linear_forward(A_prev, W, b):
+def linear_forward(A_prev, W, b): # computes Z (#1)
     Z = np.dot(W,A_prev)+b
     cache = (A_prev, W, b)
     assert(Z.shape == (W.shape[0], A.shape[1]))
@@ -46,7 +46,7 @@ def linear_forward(A_prev, W, b):
 
 
 ```python
-def linear_activation_forward(A_prev, W, b, activation):
+def linear_activation_forward(A_prev, W, b, activation): # computes Z,A (#2)
     
     if activation == "sigmoid":    
         Z, linear_cache = linear_forward(A_prev,W,b) 
@@ -63,7 +63,7 @@ def linear_activation_forward(A_prev, W, b, activation):
 
 
 ```python
-def L_model_forward(X, parameters):
+def L_model_forward(X, parameters): # full forward prop (#3)
     caches = []
     A = X
     L = len(parameters) // 2  # number of layers 
@@ -82,7 +82,7 @@ def L_model_forward(X, parameters):
 
 
 ```python
-def compute_cost(AL, Y):
+def compute_cost(AL, Y): # computes cost
     m = Y.shape[1]
     cost = -np.sum(Y*np.log(AL)+(1-Y)*np.log(1-AL))/m  # Compute Cost
     cost = np.squeeze(cost) 
@@ -115,7 +115,7 @@ def relu_backward(dA, cache):
 
 
 ```python
-def linear_backward(dZ, cache): # computes dA_prev, dW, db from dZ 
+def linear_backward(dZ, cache): # computes dA_prev, dW, db from dZ (#1)
     A_prev, W, b = cache
     m = A_prev.shape[1]
 
@@ -131,9 +131,9 @@ def linear_backward(dZ, cache): # computes dA_prev, dW, db from dZ
 
 
 ```python
-def linear_activation_backward(dA, cache, activation): # computes dA_prev, dW, db, dZ from dA
+def linear_activation_backward(dA, cache, activation): # computes dA_prev, dW, db, dZ from dA (#2)
     linear_cache, activation_cache = cache  
-    # linear : (A_prev, W, b)  //  activation : Z
+    # linear = (A_prev, W, b)  +  activation = Z
     if activation == "relu":
         dZ = relu_backward(dA,activation_cache)
         dA_prev, dW, db = linear_backward(dZ,linear_cache)
@@ -147,11 +147,11 @@ def linear_activation_backward(dA, cache, activation): # computes dA_prev, dW, d
 
 
 ```python
-def L_model_backward(AL, Y, caches):
+def L_model_backward(AL, Y, caches): # full backprop (#3)
     grads = {}
-    L = len(caches) # the number of layers
+    L = len(caches) 
     m = AL.shape[1]
-    Y = Y.reshape(AL.shape) # after this line, Y is the same shape as AL
+    Y = Y.reshape(AL.shape)
     
     dAL = -(np.divide(Y, AL)-np.divide(1-Y,1-AL)) 
     current_cache = caches[L-1] # Backprop for Lth layer
@@ -172,12 +172,32 @@ def L_model_backward(AL, Y, caches):
 
 
 ```python
-def update_parameters(parameters, grads, learning_rate):
-    L = len(parameters) // 2  # number of layers 
+def update_parameters(parameters, grads, learning_rate): # update parameters
+    L = len(parameters) // 2  
 
-    for l in range(L): # Update Parameters
+    for l in range(L): # update from grads
         parameters["W" + str(l+1)] -= learning_rate*grads["dW"+str(l+1)]
         parameters["b" + str(l+1)] -= learning_rate*grads["db"+str(l+1)]
         
     return parameters
+```
+
+
+```python
+def L_layer_model(X, Y, layers_dims, learning_rate = 0.0075, num_iterations = 3000, print_cost=False):
+    np.random.seed(1)
+    costs = []                        
+    parameters = initialize_parameters_deep(layers_dims)
+    
+    for i in range(0, num_iterations): # Full DL pipeline
+        AL, caches = L_model_forward(X,parameters) # forward
+        cost = compute_cost(AL,Y) # cost
+        grads = L_model_backward(AL,Y,caches) # backprop
+        parameters = update_parameters(parameters, grads, learning_rate) # update
+        
+        if print_cost and i % 100 == 0:
+            print ("Cost after iteration %i: %f" %(i, cost))
+            costs.append(cost)
+    
+    return parameters 
 ```
