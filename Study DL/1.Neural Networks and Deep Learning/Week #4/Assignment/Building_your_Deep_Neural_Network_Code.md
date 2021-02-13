@@ -190,6 +190,7 @@ def L_layer_model(X, Y, layers_dims, learning_rate = 0.0075, num_iterations = 30
     parameters = initialize_parameters_deep(layers_dims)
     
     for i in range(0, num_iterations): # Full DL pipeline
+    
         AL, caches = L_model_forward(X,parameters) # forward
         cost = compute_cost(AL,Y) # cost
         grads = L_model_backward(AL,Y,caches) # backprop
