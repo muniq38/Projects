@@ -905,6 +905,9 @@ with tf.Session() as sess:
     print("cost = " + str(cost))
 ```
 
+    cost = Tensor("Mean:0", shape=(), dtype=float32)
+
+
 **Expected Output**: 
 
 <table> 
@@ -1064,12 +1067,30 @@ Run the following cell to train your model! On our machine it takes about 5 minu
 parameters = model(X_train, Y_train, X_test, Y_test)
 ```
 
-    Cost after epoch 0: 19.456003
-    Cost after epoch 100: 1900.406986
-    Cost after epoch 200: 8720.632614
-    Cost after epoch 300: 22270.301483
-    Cost after epoch 400: 43050.080811
-    Cost after epoch 500: 75552.895508
+    Cost after epoch 0: 1.913693
+    Cost after epoch 100: 1.048222
+    Cost after epoch 200: 0.756012
+    Cost after epoch 300: 0.590844
+    Cost after epoch 400: 0.483423
+    Cost after epoch 500: 0.392928
+    Cost after epoch 600: 0.323629
+    Cost after epoch 700: 0.262100
+    Cost after epoch 800: 0.210199
+    Cost after epoch 900: 0.171622
+    Cost after epoch 1000: 0.145907
+    Cost after epoch 1100: 0.110942
+    Cost after epoch 1200: 0.088966
+    Cost after epoch 1300: 0.061226
+    Cost after epoch 1400: 0.053860
+
+
+
+![png](output_64_1.png)
+
+
+    Parameters have been trained!
+    Train Accuracy: 0.999074
+    Test Accuracy: 0.716667
 
 
 **Expected Output**:
@@ -1128,6 +1149,13 @@ my_image_prediction = predict(my_image, parameters)
 plt.imshow(image)
 print("Your algorithm predicts: y = " + str(np.squeeze(my_image_prediction)))
 ```
+
+    Your algorithm predicts: y = 3
+
+
+
+![png](output_67_1.png)
+
 
 You indeed deserved a "thumbs-up" although as you can see the algorithm seems to classify it incorrectly. The reason is that the training set doesn't contain any "thumbs-up", so the model doesn't know how to deal with it! We call that a "mismatched data distribution" and it is one of the various of the next course on "Structuring Machine Learning Projects".
 
