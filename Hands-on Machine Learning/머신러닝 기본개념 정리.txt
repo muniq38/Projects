@@ -1,0 +1,85 @@
+
+머신러닝 = 규칙을 명시하지 않아도 데이터로부터 규칙을 학습하는 능력을 갖추게 하는 연구 분야
+( 작업 T, 성능 측정 P, 경험 E = 경험 E로 인해 작업 T에 대한 성능 P 상승 )
+
+작업하는 프로그램을 만들 때 - 문제를 해결하는 규칙을 직접 규정하는 과정 
+"복잡한 문제"에서 머신러닝의 학습으로 이 과정을 대체할 수 있고, 
+대량의 데이터베이스와 새로운 데이터에 "적응"할 수 있다.
+게다가, 머신러닝이 도출해 낸 결과로 "내가 규칙이나 통찰을 배울" 수도 있다.
+
+머신러닝의 도전 과제 : 데이터 문제 / 과대적합, 과소적합 / 특성공학
+
+< 학술적인 용어들 >
+sample [샘플] = 학습 또는 사용을 위해 시스템에 입력할 수 있는 단일 데이터
+train-set [훈련세트] = 시스템에 알고리즘을 적용하여 parameter를 학습하는 데 쓰임
+dev-set [검증세트] = 시스템의 알고리즘이 바람직한지 검증, hyperparameter를 결정하는 데 쓰임  
+cross-validation [교차검증] = dev-set을 여러 개 사용하는 방법, hyperparameter의 결정을 도움
+train-dev-set = train-set에서 떼어내어 train과 dev-set 사이 불일치가 심한지 평가하는 데 쓰임  
+test-set [시험세트] = 마지막으로 학습 시스템을 검증하는 데 쓰임 (일반화 성능 테스트)
+model [모델/가설] = 샘플을 넣었을 때 작업을 수행한 결과를 도출하는 함수
+feature [특성] = 주행거리, 연식, 브랜드 같이 모델에 쓰이는 데이터의 구성 요소  
+feature engineering [특성공학] = 특성 선택, 추출 등 훈련에 사용할 좋은 특성을 찾는 과정
+
+IBL [instance-based learning / 사례기반] = 새로운 샘플과 유사도가 큰 훈련샘플 여러개를 보고 정답 도출  
+MBL [model-based learning / 모델기반] = 학습을 통해 답을 예측하는 모델을 세우고 샘플을 넣어 정답 도출
+
+cost [비용] = 모델과 정답의 거리(오차)를 나타내는 수치, 이를 최대한 줄이는 것이 학습 알고리즘의 목적 
+parameter = 모델에 사용되는 계수, 훈련세트의 학습을 통해 cost를 줄이는 방향으로 자동으로 변화  
+hyperparameter = 규제, 학습률 등 cost 계산과 학습 알고리즘에 쓰이는 계수, 수동으로 설정해줘야 함
+overfitting [과적합] = 데이터에 민감, 융통성 없어 일반화 안됨, train 정확도 높지만 dev 정확도 낮음
+underfitting [과소적합] = 데이터에 적응하는 기본적인 능력 부족, 어디든 정확도가 전반적으로 낮음
+sampling noise = 실제 경향성과 차이 나는 샘플들 때문에 생기는 잡음  
+( 실제 경향성에 일치하는 모델, 즉 최적해에도 cost가 존재하는데, 바로 sampling noise 때문 )
+sampling bias = 잘못된 데이터 수집으로 경향성이 실제와 다른 방향으로 쏠리는 현상
+( 학습했을 때 실제 경향성에 일치하는 모델에 도달하기 어렵게 만듬 )
+
+
+< 학습의 종류 >
+지도 학습 / 비지도 학습 = 샘플에 정답(label)이 포함되는가 그렇지 않은가?
+
+< 지도학습 - Regression & Classification >
+- linear regression
+- logistic regression 
+- k-closest neighbors 
+- SVM [support vector machine] 
+- decision tree / random forest 
+- neural network [신경망]
+
+< 비지도학습 - Clustering > 
+주어지는 샘플을 비슷한 것끼리 뭉쳐 여러 군집으로 나누는 것
+- k-means 
+- DBSCAN
+- HCA [hierarchical cluster analysis / 계층 군집 분석]
+- anomaly detection [이상 감지]
+- oneclass SVM
+- isolation forest
+
+< 비지도학습 - Visualization & Dimensionality Reduction >
+데이터를 편하게 처리하거나 시각화할 수 있도록 데이터의 차원을 축소하는 것
+- PCA [principal component analysis / 주성분 분석] 
+- kernal PCA
+- LLE [locally linear embedding / 지역적 선형 임베딩] 
+- t-SNE [t-distributed stochastic neighbor embedding]
+
+< 연관 규칙 학습 - Association Rule Learning >
+복합적인 데이터 부류 사이에 이어진 관계를 찾는 것 
+- Apriori
+- Eclat
+
+준지도학습 = 데이터의 일부에만 레이블이 달린 경우
+(DBM [deep belief network], RBM [restricted Boltzmann machine] 등 융합 알고리즘)
+
+강화학습 = 시스템(agent)이 반복해서 환경을 관찰해서 행동한 뒤 보상이나 페널티를 받는 학습
+(스스로의 행동 전략을 만들어 나가며, 주로 게임 분야나 로보틱스에서 이용됨)
+  
+
+
+
+
+
+
+
+
+
+
+
