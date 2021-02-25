@@ -90,12 +90,6 @@ sgd_clf.predict([some_digit]) # 모델에 입력을 넣으면 결과가 출력�
 
 
     SGDClassifier(random_state=32)
-
-
-
-
-
-
     array([ True])
 
 
@@ -141,22 +135,11 @@ confusion_matrix(y_train_8, y_train_pred) # predict와 label로 오차행렬 생
 confusion_matrix(y_train_8, y_train_8) # 만약 predict가 100% 정확할 경우 
 ```
 
-
-
-
     array([[51981,  2168],
            [ 2136,  3715]], dtype=int64)
-
-
-
-
-
-
+           
     array([[54149,     0],
            [    0,  5851]], dtype=int64)
-
-
-
 
 ```python
 precision_score(y_train_8, y_train_pred) # precision = True라고 예측한 것중 True 비율 = 63.1%
@@ -164,27 +147,9 @@ recall_score(y_train_8, y_train_pred) # recall = True 중 True라고 예측한 �
 f1_score(y_train_8, y_train_pred) # F1 = 두 점수의 조화평균, 임계값에 따른 모델의 성능 제시
 ```
 
-
-
-
     0.6314805371409145
-
-
-
-
-
-
     0.634934199282174
-
-
-
-
-
-
     0.633202658939833
-
-
-
 
 ```python
 y_scores = cross_val_predict(sgd_clf, X_train, y_train_8, cv=3, method="decision_function") # 3겹 교차검증 후 score 저장
@@ -238,12 +203,6 @@ recall_score(y_train_8, y_train_pred_90p) # precision은 90% 이상인 반면, r
 
 
     0.9005649717514125
-
-
-
-
-
-
     0.1362160314476158
 
 
@@ -295,12 +254,6 @@ roc_auc_score(y_train_8, y_scores_forest) # 두 ROC곡선의 AUC 비교
 
 
     0.9105237007545589
-
-
-
-
-
-
     0.9965481456893603
 
 
@@ -377,5 +330,5 @@ X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))
 cross_val_score(sgd_clf, X_train_scaled, y_train, cv=3, scoring="accuracy") # 교차검증 시 정확도 향상 확인 가능
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDQ2NzAwMl19
+eyJoaXN0b3J5IjpbLTYxMTM1Mzg1NF19
 -->
