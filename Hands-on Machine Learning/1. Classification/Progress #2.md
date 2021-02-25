@@ -136,8 +136,7 @@ confusion_matrix(y_train_8, y_train_8) # 만약 predict가 100% 정확할 경우
 ```
 
     array([[51981,  2168],
-           [ 2136,  3715]], dtype=int64)
-           
+           [ 2136,  3715]], dtype=int64)      
     array([[54149,     0],
            [    0,  5851]], dtype=int64)
 
@@ -251,12 +250,8 @@ roc_auc_score(y_train_8, y_scores_forest) # 두 ROC곡선의 AUC 비교
 
 
 
-
-
     0.9105237007545589
     0.9965481456893603
-
-
 
 
 ```python
@@ -264,21 +259,8 @@ svm_clf = SVC() # Support Vector Machine Classfier을 모델로 사용 (다중�
 svm_clf.fit(X_train, y_train) # fit
 svm_clf.predict([some_digit]) # predict 
 ```
-
-
-
-
     SVC()
-
-
-
-
-
-
     array([8], dtype=uint8)
-
-
-
 
 ```python
 svm_clf.classes_ # 모델이 분류하는 레이블의 목록
@@ -291,20 +273,8 @@ np.argmax(some_digit_scores) # 10가지 score 중 최대값을 가지는 index
 
 
     array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8)
-
-
-
-
-
-
     array([[ 1.72232933,  0.69555693,  6.26698152,  8.28784738,  2.71188804,
              4.9328481 , -0.30709211,  3.79593852,  9.31602572,  7.29070571]])
-
-
-
-
-
-
     8
 
 
@@ -330,5 +300,5 @@ X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))
 cross_val_score(sgd_clf, X_train_scaled, y_train, cv=3, scoring="accuracy") # 교차검증 시 정확도 향상 확인 가능
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMTM1Mzg1NF19
+eyJoaXN0b3J5IjpbLTg3MjI1ODkxMl19
 -->
