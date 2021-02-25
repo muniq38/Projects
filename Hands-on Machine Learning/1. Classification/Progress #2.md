@@ -376,3 +376,6 @@ scaler = StandardScaler() # 입력 데이터의 분포를 스케일링함 (Norma
 X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))
 cross_val_score(sgd_clf, X_train_scaled, y_train, cv=3, scoring="accuracy") # 교차검증 시 정확도 향상 확인 가능
 ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE4MDQ2NzAwMl19
+-->
