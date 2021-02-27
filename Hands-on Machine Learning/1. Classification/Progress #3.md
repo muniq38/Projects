@@ -63,14 +63,6 @@ plt.show() # 이미지 출력
 
 
 
-
-    <matplotlib.image.AxesImage at 0x1c8fb97ed00>
-
-
-
-
-
-
     (-0.5, 27.5, 27.5, -0.5)
 
 
@@ -104,12 +96,6 @@ sgd_clf.predict([some_digit]) # 모델에 입력을 넣으면 결과가 출력�
 
 
     SGDClassifier(random_state=32)
-
-
-
-
-
-
     array([ True])
 
 
@@ -160,12 +146,6 @@ confusion_matrix(y_train_8, y_train_8) # 만약 predict가 100% 정확할 경우
 
     array([[51981,  2168],
            [ 2136,  3715]], dtype=int64)
-
-
-
-
-
-
     array([[54149,     0],
            [    0,  5851]], dtype=int64)
 
@@ -182,19 +162,7 @@ f1_score(y_train_8, y_train_8_pred) # F1 = 두 점수의 조화평균, 임계값
 
 
     0.6314805371409145
-
-
-
-
-
-
     0.634934199282174
-
-
-
-
-
-
     0.633202658939833
 
 
@@ -248,12 +216,6 @@ recall_score(y_train_8, y_train_pred_90p) # precision은 90% 이상인 반면, r
 
 
     0.9005649717514125
-
-
-
-
-
-
     0.1362160314476158
 
 
@@ -305,12 +267,6 @@ roc_auc_score(y_train_8, y_scores_forest) # 두 ROC곡선의 AUC 비교
 
 
     0.9105237007545589
-
-
-
-
-
-
     0.9965481456893603
 
 
@@ -333,19 +289,7 @@ cross_val_score(svm_clf, X_train_small, y_train_small, cv=3, scoring="accuracy")
 
 
     SVC()
-
-
-
-
-
-
     array([8], dtype=uint8)
-
-
-
-
-
-
     array([0.92573143, 0.95273818, 0.94523631])
 
 
@@ -362,20 +306,8 @@ np.argmax(some_digit_scores) # 10가지 score 중 최대값을 가지는 index
 
 
     array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8)
-
-
-
-
-
-
     array([[ 3.84154229, -0.27526145,  8.18636682,  4.87562896,  2.76458353,
              7.18364473,  1.74813123,  0.72775562,  9.30745486,  6.21505412]])
-
-
-
-
-
-
     8
 
 
@@ -391,19 +323,7 @@ cross_val_score(sgd_clf, X_train, y_train, cv=3, scoring="accuracy") # 3겹 교�
 
 
     SGDClassifier(random_state=32)
-
-
-
-
-
-
     array([8], dtype=uint8)
-
-
-
-
-
-
     array([0.85365, 0.85045, 0.8831 ])
 
 
@@ -414,12 +334,6 @@ scaler = StandardScaler() # SGD팁 - 입력 데이터의 분포를 스케일링�
 X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))
 cross_val_score(sgd_clf, X_train_scaled, y_train, cv=3, scoring="accuracy") # 교차검증 시 정확도 향상 확인 가능
 ```
-
-    C:\Users\main-pc\anaconda3\lib\site-packages\sklearn\linear_model\_stochastic_gradient.py:570: ConvergenceWarning: Maximum number of iteration reached before convergence. Consider increasing max_iter to improve the fit.
-      warnings.warn("Maximum number of iteration reached before "
-    
-
-
 
 
     array([0.8993 , 0.88925, 0.90845])
@@ -451,13 +365,6 @@ plt.matshow(svm_conf_mx, cmap=plt.cm.gray) # 대각선 위치가 밝아야 분�
 
 
 
-
-
-    <matplotlib.image.AxesImage at 0x1c8fbac3460>
-
-
-
-
 ![png](output_27_2.png)
 
 
@@ -467,11 +374,6 @@ temp = svm_conf_mx / svm_conf_mx.sum(axis=1, keepdims=True) # Normalize
 np.fill_diagonal(temp, 0) # 대각선 영역 제거
 plt.matshow(temp, cmap=plt.cm.gray) # 어디에서 오차가 심한지 확인 가능 (4-9,7-9,3-5)
 ```
-
-
-
-
-    <matplotlib.image.AxesImage at 0x1c8fcb1a070>
 
 
 
@@ -504,14 +406,6 @@ plt.matshow(conf_mx, cmap=plt.cm.gray)
 
 
 
-
-
-
-    <matplotlib.image.AxesImage at 0x1c8fcb69490>
-
-
-
-
 ![png](output_29_2.png)
 
 
@@ -521,12 +415,6 @@ temp = conf_mx / conf_mx.sum(axis=1, keepdims=True) # Normalize
 np.fill_diagonal(temp, 0) # 대각선 영역 제거
 plt.matshow(temp, cmap=plt.cm.gray) # 어디에서 오차가 심한지 확인 가능 
 ```
-
-
-
-
-    <matplotlib.image.AxesImage at 0x1c8fcbb5a30>
-
 
 
 
@@ -571,40 +459,6 @@ plt.subplot(224); plot_digits(X_94[:25], images_per_row=5)
 
 
 
-
-    <Figure size 576x576 with 0 Axes>
-
-
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x1c8fcbcf490>
-
-
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x1c8fcbe1490>
-
-
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x1c8fd6e9fd0>
-
-
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x1c8fcc0fac0>
-
-
-
-
 ![png](output_33_5.png)
 
 
@@ -626,12 +480,6 @@ knn_clf.predict([some_digit]) # predict(8)
 
 
     KNeighborsClassifier()
-
-
-
-
-
-
     array([[ True, False]])
 
 
