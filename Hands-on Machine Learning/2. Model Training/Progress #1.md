@@ -61,7 +61,7 @@ plt.show() # 추세선이 잘 그려진 것을 확인할 수 있다.
 ```
 
 
-![png](output_5_0.png)
+![png](./images/output_5_0.png)
 
 
 
@@ -90,12 +90,6 @@ np.linalg.pinv(X_b).dot(y) # pint(X)는 특잇값 분해(SVD)를 통해 얻을 �
 
 
     (array([4.34336618]), array([[2.75391162]]))
-
-
-
-
-
-
     array([[4.34336618],
            [2.75391162]])
 
@@ -123,35 +117,17 @@ Linear_GradDesc(X, 0.4, True, 4) # learning_rate가 크면 학습이 불안정�
 ```
 
 
-![png](output_9_0.png)
-
-
-
-
+![png](./images/output_9_0.png)
 
     array([[3.78549096],
            [2.86167391]])
 
-
-
-
-![png](output_9_2.png)
-
-
-
-
+![png](./images/output_9_2.png)
 
     array([[2.3119142 ],
            [2.82633064]])
 
-
-
-
-![png](output_9_4.png)
-
-
-
-
+![png](./images/output_9_4.png)
 
     array([[2.4703284 ],
            [3.05491163]])
@@ -189,26 +165,11 @@ Linear_StocGradDesc(X, plot=True, n_epochs=50)
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    ValueError                                Traceback (most recent call last)
-
-    <ipython-input-68-9dfd13b37434> in <module>
-    ----> 1 Linear_StocGradDesc(X, plot=True, n_epochs=50)
-    
-
-    <ipython-input-67-b57f7bc6069b> in Linear_StocGradDesc(X, plot, plot_iteration, n_epochs)
-         14             xi.reshape(1,2)
-         15             yi.reshape(1,1)
-    ---> 16             gradients = 2 * xi.T.dot(xi.dot(theta)-yi) # 벡터 theta[1~n] 각 원소에 대한 MSE cost의 편미분벡터 = X'(thetaX-y)
-         17             learning_rate = learning_schedule(epoch*m+i) # SGD는 답에 갈수록 불안정하기 때문에 learning_rate를 감쇠시킴
-         18             theta -= learning_rate*gradients # GradDesc 기본공식
-    
-
-    ValueError: shapes (2,) and (1,) not aligned: 2 (dim 0) != 1 (dim 0)
-
 
 
 ```python
 
 ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIwOTYxNjM2NzBdfQ==
+-->
