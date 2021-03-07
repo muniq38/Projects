@@ -19,9 +19,9 @@ int main(){
     for(i=1; i<=N; i++) for(j=1; j<i; j++) if(Graph[i][j]!=INF)
     { Edges[0].push_back(i); Edges[1].push_back(j); Edges[2].push_back(Graph[i][j]); } // 저장용
     
-    for(e=1; e<=M; e++){
+    for(e=0; e<Edges[0].size(); e++){
         for(i=1; i<=N; i++) for(j=1; j<=N; j++) if(i!=j) Graph[i][j]=INF;
-        for(i=1; i<=M; i++){ 
+        for(i=0; i<Edges[0].size(); i++){ 
             Graph[Edges[0][i]][Edges[1][i]] = Edges[2][i]; 
             Graph[Edges[1][i]][Edges[0][i]] = Edges[2][i]; 
         }Graph[Edges[0][e]][Edges[1][e]] = Edges[2][e]/2;
@@ -29,5 +29,7 @@ int main(){
         for(k=1; k<=N; k++) for(i=1; i<=N; i++) for(j=1; j<=N; j++)
         if(Graph[i][k]+Graph[k][j]<Graph[i][j]) Graph[i][j]=Graph[i][k]+Graph[k][j];
         if(Min>Graph[1][N]) Min=Graph[1][N];
-    }printf("%d\n", Min);
+    }if(Min>1000000){ printf("-1\n"); return 0; } 
+    printf("%d\n", Min);
+    return 0;
 }

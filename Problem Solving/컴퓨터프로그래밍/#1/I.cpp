@@ -13,35 +13,31 @@ void LineSwap(int x, int y){
 }
 
 int main(){
-    int N, A=0, B=0, pA=0, pB=0; scanf("%d", &N);
+    int N, A=0, B=0, pA=0, pB=0, i; scanf("%d", &N);
     Line.resize(N+2); Line[N+1]=N+1;
-    for(int i=1; i<=N; i++) scanf("%d", &Line[i]);
-    for(int i=0; i<=N; i++){
-        if(Line[i]==i && Line[i+1]!=i+1) A=i+1;
-        if(Line[i]!=i && Line[i+1]==i+1) B=i;
-    }if(A==0 && B==0){ printf("1 1\n2 2\n"); return 0; }
+    for(i=1; i<=N; i++) scanf("%d", &Line[i]);
     
-    for(int i=1; i<=N; i++) if(Line[i]==A) pA=i;
-    LineSwap(A,pA); 
-    for(int i=1; i<=N; i++) if(Line[i]==B) pB=i;
+    for(i=0; i<=N; i++) if(Line[i]==i && Line[i+1]!=i+1){ A=i+1; break; }
+    if(!A){ printf("1 1\n1 1\n"); return 0; }
+    
+    for(i=1; i<=N; i++) if(Line[i]==A) pA=i;
+    LineSwap(A,pA);
+    for(i=0; i<=N; i++) if(Line[i]==i && Line[i+1]!=i+1){ B=i+1; break; }
+    if(!B){ printf("%d %d\n1 1\n", min(A,pA), max(A,pA)); return 0; }
+    for(i=1; i<=N; i++) if(Line[i]==B) pB=i;
     LineSwap(B,pB);
-    for(int i=1; i<=N; i++){
+    for(i=1; i<=N; i++){
         if(Line[i]!=i){ LineSwap(B,pB); LineSwap(A,pA); break; }
         if(i==N){ printf("%d %d\n%d %d\n", min(A,pA), max(A,pA), min(B,pB), max(B,pB)); return 0; }
     }
     
-    for(int i=1; i<=N; i++) if(Line[i]==B) pB=i;
-    LineSwap(B,pB);
-    for(int i=1; i<=N; i++) if(Line[i]==A) pA=i;
+    A=0; B=0; pA=0; pB=0;
+    for(i=N+1; i>0; i--) if(Line[i]==i && Line[i-1]!=i-1){ A=i-1; break; }
+    for(i=1; i<=N; i++) if(Line[i]==A) pA=i;
     LineSwap(A,pA);
-    for(int i=1; i<=N; i++){
-        if(Line[i]!=i){ LineSwap(A,pA); break; }
-        if(i==N){ printf("%d %d\n%d %d\n", min(B,pB), max(B,pB), min(A,pA), max(A,pA)); return 0; }
-    }
-    
-    printf("%d %d\n", min(B,pB), max(B,pB));
-    for(int i=0; i<=N; i++) if(Line[i]==i && Line[i+1]!=i+1) A=i+1;
-    for(int i=1; i<=N; i++) if(Line[i]==A) pA=i;
-    printf("%d %d\n", min(A,pA), max(A,pA));
+    for(i=N+1; i>0; i--) if(Line[i]==i && Line[i-1]!=i-1){ B=i-1; break; }
+    for(i=1; i<=N; i++) if(Line[i]==B) pB=i;
+    LineSwap(B,pB);
+    printf("%d %d\n%d %d\n", min(A,pA), max(A,pA), min(B,pB), max(B,pB));
     return 0; 
 }

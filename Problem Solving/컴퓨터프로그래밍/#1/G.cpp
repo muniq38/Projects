@@ -35,4 +35,3 @@ int main()
     }printf("%d\n", Ans);
     return 0;
 }
-
