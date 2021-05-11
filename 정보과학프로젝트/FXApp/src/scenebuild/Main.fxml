@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="285.0" layoutY="112.0" mnemonicParsing="false" text="뽈롱" textFill="#eb18a1" />
+      <Button layoutX="65.0" layoutY="112.0" mnemonicParsing="false" text="뽈롱" textFill="#c92222" />
+      <Button layoutX="180.0" layoutY="53.0" mnemonicParsing="false" text="뽈롱" textFill="#1ad78e" />
+      <TextField alignment="CENTER" layoutX="65.0" layoutY="184.0" prefHeight="191.0" prefWidth="271.0" text="머뚱금 뽈롱">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
