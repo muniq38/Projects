@@ -1,0 +1,67 @@
+
+저는 최근에 RL을 처음 본격적으로 공부하기 시작한 고등학생입니다.
+올해 저는 RL에 관련된 교내R&E를 계획하고 있는데, 
+Multi-Agent RL을 이용한 영역 차지 게임의 전략 학습
+을 연구주제 삼아서 좀 연구해보려고 합니다.
+접하게 된지 얼마 안된 만큼
+올해 안에 강화학습을 비롯하여 ML 분야에서 실력을 
+웬만큼 끌어올리는 것이 제 목표입니다.
+
+강화학습 중요한 개념단어
+
+[1장]
+학습자 agent
+계획 planning
+보상 reward
+가치 value
+모델 model
+정책 policy
+상태 state
+
+[2장]
+
+활용과 탐험 exploit & explore
+다중 선택 문제 bandit prob.
+선택 (bandit에서) arm
+단일 상태 single-state
+정상 확률 분포 stationary probability distribution (변하지 않는)
+시간 간격 time step (1timestep = 1action)
+
+행동 가치 방법 action-value method  ( 행동의 가치함수 Q(a) 정의 )
+표본평균 방법 sample-average ( 가치를 보상의 표본평균이라 추정 )
+탐욕적 방법 greedy ( 가장 직관적인 활용 )
+입실론 탐욕적 방법 ( 근데 이제 탐험을 추가한 )
+
+잡음 noise
+결정론적 deterministic
+비정상적 nonstationary (변하는)
+
+기하급수적 최신 가중 평균 방법 ( 비정상 문제에 적합 )
+exponential recency-weighted average 
+긍정적 초깃값 optimistic initial value ( 정상적 문제에 적합 )
+신뢰 상한 방법 Upper Confidence Bound = UCB 
+( 엡그리디보다 좋은 성능, 난이도가 올라가면 적용 어려워짐 )
+
+소프트맥스 분포 softmax distribution ( 엡그리디 상위호환 )
+확률론적 경사 하강 stochastic gradient descent = SGD
+( 미분을 통한 최적화를 이용하여 문제의 해를 구한다 )
+
+맥락적 다중 선택 contextual bandit = associative search (구)
+( 각 bandit (state)에 대응하는 최적의 arm (action)을 전부 찾아야함 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
