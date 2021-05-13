@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.property02.RootController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="15.0" prefWidth="629.0" text="TextArea1">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="Area1" prefHeight="146.0" prefWidth="600.0">
+         <VBox.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System" size="12.0" />
+         </font>
+      </TextArea>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="15.0" prefWidth="646.0" text="TextArea2" textAlignment="CENTER">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="Area2" prefHeight="157.0" prefWidth="502.0">
+         <VBox.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Lucida Console" size="18.0" />
+         </font>
+      </TextArea>
+   </children>
+</VBox>
