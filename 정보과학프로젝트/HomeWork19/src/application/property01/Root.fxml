@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+   prefHeight="400.0" prefWidth="600.0" 
+   xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" 
+   fx:controller="application.property01.RootController">
+   <center>
+      <Label fx:id="label" text="Hello World" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="51.0" />
+         </font>
+      </Label>
+   </center>
+   <bottom>
+      <Slider fx:id="slider" value="30.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
