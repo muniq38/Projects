@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.properties.RootController">
+   <center>
+      <Canvas fx:id="canvas" height="200.0" width="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <Rectangle fx:id="rect" arcHeight="5.0" arcWidth="5.0" height="133.0" rotate="42.3" stroke="BLACK" strokeType="INSIDE" width="74.0" BorderPane.alignment="CENTER">
+         <fill>
+            <RadialGradient radius="1.0">
+               <stops>
+                  <Stop color="#1f99ffed" />
+                  <Stop color="#1f99ffed" offset="0.0078125" />
+                  <Stop color="#5f1fffed" offset="0.43714488636363635" />
+                  <Stop color="WHITE" offset="0.69921875" />
+                  <Stop color="#5e1fffed" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Rectangle>
+   </right>
+</BorderPane>
